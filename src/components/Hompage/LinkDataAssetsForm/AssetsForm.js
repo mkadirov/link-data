@@ -4,7 +4,7 @@ import clock from '../../../assets/icons/clock.png'
 
 function AssetsForm() {
   return (
-    <Box marginTop={15}>
+    <Box marginTop={30} marginBottom={30}>
         <Grid2 container display={'flex'} justifyContent={'center'}>
           <Grid2 size={{xs: 4, lg: 3}}>
             <img src={clock} alt="" />

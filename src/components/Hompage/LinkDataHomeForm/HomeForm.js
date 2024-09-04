@@ -1,4 +1,11 @@
-import { Badge, Box, Button, Grid2, TextField, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Button,
+  Grid2,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { districtsList, subRegionsList } from "../../../data/Location";
 import MyContext from "../../Context/MyContext";
@@ -52,7 +59,7 @@ function HomeForm() {
   // Function to handle the scroll action
   const scrollToResult = () => {
     if (resultRef.current) {
-      resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      resultRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -107,15 +114,26 @@ function HomeForm() {
   };
 
   const sendHomeForm = () => {
-    
     const homeData = {
+      mahalla: "Afrosiyob",
+      ownerType: "Biznes",
+      bathroomType: "Alohida",
+      pricingYear: 2024,
+      planType: "Aralash",
+      rebate: 1, // Assuming 1 is used for true
+      repairType: "Yaxshi",
+      numberOfRooms: 3,
+      furnished: 0, // Assuming 0 is used for false
+      marketType: "Ikkilamchi bozor",
+      floorOfHouse: 5,
+      square: 60.5,
+      publicPlaces: ["park", "shkola"],
+      pricingMonth: 9,
+      floor: 2,
+      buildingType: "Blokli",
+    };
+  };
 
-    }
-
-
-  }
-
-  
   return (
     <Box sx={{ width: "100%" }}>
       <Typography
@@ -238,7 +256,7 @@ function HomeForm() {
             isEquipped={isEquipped}
             pricingYear={pricingYear}
             pricingMonth={pricingMonth}
-            scrollToResult = {scrollToResult}
+            scrollToResult={scrollToResult}
           />
         </Grid2>
       </Grid2>
@@ -271,30 +289,35 @@ function HomeForm() {
             isEquipped={isEquipped}
             pricingYear={pricingYear}
             pricingMonth={pricingMonth}
-            scrollToResult = {scrollToResult}
+            scrollToResult={scrollToResult}
           />
         </Grid2>
       </Grid2>
 
-      <Grid2 container display={"flex"} justifyContent={'center'}> 
-        <Grid2 item size={{xs: 11, md: 8, lg: 6, xl: 5}}>
-          <Typography variant="h6" marginTop={5} textAlign={'center'}>
-            {
-              isUzbek? "Uyning baholangan bozor narxi" : "Оценочная рыночная стоимость квартиры"
-            }
+      <Grid2 container display={"flex"} justifyContent={"center"}>
+        <Grid2 item size={{ xs: 11, md: 8, lg: 6, xl: 5 }}>
+          <Typography variant="h6" marginTop={5} textAlign={"center"}>
+            {isUzbek
+              ? "Uyning baholangan bozor narxi"
+              : "Оценочная рыночная стоимость квартиры"}
           </Typography>
-          <Box ref={resultRef} className='main-border' sx={{marginBottom: 5, padding: 2}} textAlign={'center'}>
-            <Typography variant="h4" fontWeight={'bold'}>
+          <Box
+            ref={resultRef}
+            className="main-border"
+            sx={{ marginBottom: 5, padding: 2 }}
+            textAlign={"center"}
+          >
+            <Typography variant="h4" fontWeight={"bold"}>
               143 500$
             </Typography>
             <Typography>
-              {
-                isUzbek? "139 890 - 147 200 atrofida baholanishi mumkin" : "Может быть оценено примерно в 139 890 - 147 200"
-              }
+              {isUzbek
+                ? "139 890 - 147 200 atrofida baholanishi mumkin"
+                : "Может быть оценено примерно в 139 890 - 147 200"}
             </Typography>
 
-            <Button variant="contained" size="small" sx={{paddingX: 3}}>
-            To‘liq hisobotni yuklab olish
+            <Button variant="contained" size="small" sx={{ paddingX: 3 }}>
+              To‘liq hisobotni yuklab olish
             </Button>
           </Box>
         </Grid2>

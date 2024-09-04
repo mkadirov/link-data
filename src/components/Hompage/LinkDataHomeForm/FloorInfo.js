@@ -22,7 +22,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
         {isUzbek ? "Uy qavatlari soni" : "Этажность дома"}
       </Typography>
 
-      <Grid2 container spacing={3}>
+      <Grid2 container spacing={3} display={'flex'} justifyContent={'center'}>
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Box className="main-border" sx={{ paddingX: 2, paddingY: 1 }}>
             <input
@@ -33,14 +33,15 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
             />
           </Box>
         </Grid2>
-        <Grid2 size={{ xs: 12, lg: 6 }}>
-          <Box>
+        <Grid2 size={{ xs: 10, lg: 6 }}>
+          <Box display={"flex"}>
             <Slider
               value={floorOfHouse == "" ? 0 : floorOfHouse}
               onChange={(e) => handleChange(e.target.value)}
               aria-labelledby="continuous-slider"
               min={0}
               max={50}
+              
             />
           </Box>
         </Grid2>
@@ -50,7 +51,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
         {isUzbek ? "Nechanchi qavat" : "Этаж квартиры"}
       </Typography>
 
-      <Grid2 container spacing={3}>
+      <Grid2 container spacing={3} display={'flex'} justifyContent={'center'}>
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Box className="main-border" sx={{ paddingX: 2, paddingY: 1 }}>
             <input
@@ -61,7 +62,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
             />
           </Box>
         </Grid2>
-        <Grid2 size={{ xs: 12, lg: 6 }}>
+        <Grid2 size={{ xs: 10, lg: 6 }}>
           <Box>
             <Slider
               value={floor == "" ? 0 : floor}
