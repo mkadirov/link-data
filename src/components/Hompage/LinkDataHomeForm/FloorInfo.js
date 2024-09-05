@@ -15,6 +15,8 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
     
   };
 
+  
+
 
   return (
     <Box marginTop={2}>
@@ -30,6 +32,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
               type="number"
               value={floorOfHouse ? floorOfHouse : ""}
               placeholder={isUzbek ? "Nechanchi qavat" : "Этажность дома"}
+              min={0}
             />
           </Box>
         </Grid2>

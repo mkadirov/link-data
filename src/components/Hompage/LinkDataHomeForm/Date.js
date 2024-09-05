@@ -4,6 +4,12 @@ import MyContext from "../../Context/MyContext";
 
 function Date({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
   const { isUzbek } = useContext(MyContext);
+
+  const handleChangeMonth = (e) => {
+    let value = e.target.value;
+    let formattedValue = value ? parseInt(value, 10) : "";
+    setPricingMonth(formattedValue);
+  };
   return (
     <Box>
       <Typography sx={{ fontWeight: "bold", marginTop: 2 }}>
@@ -22,16 +28,7 @@ function Date({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
           <Grid2 size={6}>
             <input
               value={pricingMonth ? pricingMonth : ""}
-              onChange={(e) => {
-                // Get the input value
-                let value = e.target.value;
-
-                // Remove leading zeros by converting it to a number and then back to a string
-                let formattedValue = value ? String(Number(value)) : "";
-
-                // Set the formatted value (without leading zeros)
-                setPricingMonth(formattedValue);
-              }}
+              onChange={(e) => handleChangeMonth(e)}
               type="number"
               max={12}
               placeholder={isUzbek ? "Baholash oyi" : "Месяц оценки"}

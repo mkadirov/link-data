@@ -24,6 +24,7 @@ import Date from "./Date";
 import CheckBox from "./CheckBox";
 import MeterSquare from "../../Global/Symbols/MeterSquare";
 import Equipped from "./Equipped";
+import { getHomePrice } from "../../../api/LinkHomeApi";
 
 function HomeForm() {
   const [region, setRegion] = useState({
@@ -45,23 +46,24 @@ function HomeForm() {
   const [planType, setPlanType] = useState("");
   const [bathroomType, setBathroomType] = useState("");
   const [furniture, setFurniture] = useState([]);
-  const [repairType, setRepairType] = useState("");
-  const [marketType, setMarketType] = useState("");
+  const [repairType, setRepairType] = useState({ id: 1, nameUZB: "Zo'r", nameRUS: "Отлично" });
+  const [marketType, setMarketType] = useState({ id: 2, nameUZB: "Ikkilamchi", nameRUS: "Вторичный" });
   const [owner, setOwner] = useState("Xususiy");
   const [rebate, setRebate] = useState(false);
   const [commission, setCommission] = useState(false);
   const [pricingMonth, setPricingMonth] = useState("");
-  const [pricingYear, setPricingYear] = useState("");
+  const [pricingYear, setPricingYear] = useState(2024);
   const [isEquipped, setIsEquipped] = useState(true);
 
   const resultRef = useRef(null);
 
-  // Function to handle the scroll action
+
   const scrollToResult = () => {
     if (resultRef.current) {
       resultRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
 
   useEffect(() => {
     setDistrict("");
@@ -113,25 +115,114 @@ function HomeForm() {
     setFurniture(furniture.filter((item) => item.id !== value.id));
   };
 
+  const checkData = () => {
+
+    if(subRegion == "") {
+      alert(isUzbek? 'Iltimos tumanni tanlang!' : "Пожалуйста, выберите район!");
+      return;
+    }
+
+    if(district == "") {
+      alert(isUzbek? 'Iltimos mahallani tanlang!' : "Пожалуйста, выберите населённый пункт!");
+      return;
+    }
+    if(numberOfRooms == "") {
+      alert(isUzbek? 'Iltimos xonalar sonini kriting!' : "Пожалуйста, введите количество комнат!");
+      return;
+    }
+
+    if(area == "") {
+      alert(isUzbek? 'Iltimos uy maydonini kriting!' : "Пожалуйста, введите площадь квартиры!");
+      return;
+    }
+
+    if(floorOfHouse == "") {
+      alert(isUzbek? 'Iltimos uyqavatlari sonini kriting!' : "Пожалуйста, введите количество этажей дома!");
+      return;
+    }
+    if(floorOfHouse < 0) {
+      alert(isUzbek? "Uy qavatlari soni manfiy bo'lishi mumkin emas!" : "Количество этажей дома не может быть отрицательным!");
+      setFloorOfHouse("")
+      return;
+    }
+
+    if(floor == "") {
+      alert(isUzbek? 'Iltimos uy qavatini kriting!' : "Пожалуйста, введите этаж квартиры!");
+      return;
+    }
+
+    if(floor < 0) {
+      alert(isUzbek? "Uy qavatlari soni manfiy bo'lishi mumkin emas" : "Количество этажей дома не может быть отрицательным!");
+      setFloor("")
+      return;
+    }
+
+    if(buildingType == "") {
+      alert(isUzbek? 'Iltimos qurilish turini kriting!' : "Пожалуйста, введите тип строительства!");
+      return;
+    }
+
+    if(planType == "") {
+      alert(isUzbek? 'Iltimos planirovka turini kriting!' : "Пожалуйста, введите тип планировки!");
+      return;
+    }
+
+    if(planType == "") {
+      alert(isUzbek? 'Iltimos planirovka turini kriting!' : "Пожалуйста, введите тип планировки!");
+      return;
+    }
+
+    if(repairType == "") {
+      alert(isUzbek? "Iltimos ta'mir turini kriting!" : "Пожалуйста, введите тип планировки!");
+      return;
+    }
+
+    if(bathroomType == "") {
+      alert(isUzbek? "Iltimos sanuzel turini kriting!" : "Пожалуйста, введите тип санузла!");
+      return;
+    }
+
+    sendHomeForm();
+    
+  }
+
   const sendHomeForm = () => {
+
+    const amenities = publicPlaces.map(item => item.nameUZB)
+    const facilities = furniture.map(item => item.nameUZB)
+
     const homeData = {
-      mahalla: "Afrosiyob",
-      ownerType: "Biznes",
-      bathroomType: "Alohida",
-      pricingYear: 2024,
-      planType: "Aralash",
-      rebate: 1, // Assuming 1 is used for true
-      repairType: "Yaxshi",
-      numberOfRooms: 3,
-      furnished: 0, // Assuming 0 is used for false
-      marketType: "Ikkilamchi bozor",
-      floorOfHouse: 5,
-      square: 60.5,
-      publicPlaces: ["park", "shkola"],
-      pricingMonth: 9,
-      floor: 2,
-      buildingType: "Blokli",
-    };
+      region: region.nameUZB,
+      district: subRegion.nameUZB,
+      neighborhood: district.nameUZB,
+      ownerType: owner,
+      bathroomType: bathroomType.nameUZB,
+      pricingYear: pricingYear,
+      planType: planType.nameUZB,
+      handle: rebate? 1 : 0,
+      repairType: repairType.nameUZB,
+      numberOfRooms: numberOfRooms,
+      furnished: isEquipped? 1:0,
+      marketType: marketType.nameUZB,
+      floorOfHouse: floorOfHouse,
+      totalArea: area,
+      amenities: amenities,
+      facilities: facilities,
+      pricingMonth: pricingMonth,
+      floor: floor,
+      buildType: buildingType.nameUZB
+    }
+
+    const fetchData = async() => {
+      const res = await getHomePrice(homeData);
+
+      if(res.success) {
+        console.log(res.data);
+        
+      }
+    }
+
+    fetchData();
   };
 
   return (
@@ -257,6 +348,8 @@ function HomeForm() {
             pricingYear={pricingYear}
             pricingMonth={pricingMonth}
             scrollToResult={scrollToResult}
+            checkData={checkData}
+            sendHomeForm={sendHomeForm}
           />
         </Grid2>
       </Grid2>
@@ -290,6 +383,8 @@ function HomeForm() {
             pricingYear={pricingYear}
             pricingMonth={pricingMonth}
             scrollToResult={scrollToResult}
+            checkData={checkData}
+            sendHomeForm={sendHomeForm}
           />
         </Grid2>
       </Grid2>

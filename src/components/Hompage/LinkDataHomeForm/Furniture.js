@@ -28,7 +28,7 @@ function Furniture({ addFurniture, deleteFurniture, clearFurnitureList, furnitur
         <Box>
           {furniture.map((item) => {
             return (
-             <Box sx={{display: 'inline-block'}}>
+             <Box key={item.nameUZB} sx={{display: 'inline-block'}}>
                  <Box
                 key={item.id}
                 className="main-border"

@@ -25,7 +25,9 @@ function CheckBox({
   isEquipped,
   pricingMonth,
   pricingYear,
-  scrollToResult
+  scrollToResult,
+  checkData,
+  sendHomeForm
 }) {
   const { isUzbek } = useContext(MyContext);
   return (
@@ -249,7 +251,10 @@ function CheckBox({
             variant="contained"
             size="small"
             sx={{ marginBottom: 2, paddingX: 4 }}
-            onClick={() => scrollToResult()}
+            onClick={() => {
+                scrollToResult()
+                checkData()
+            }}
           >
             Baholash
           </Button>
