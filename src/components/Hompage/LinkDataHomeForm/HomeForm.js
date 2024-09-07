@@ -212,6 +212,7 @@ function HomeForm() {
       floor: floor,
       buildType: buildingType.nameUZB
     }
+    
 
     const fetchData = async() => {
       const res = await getHomePrice(homeData);

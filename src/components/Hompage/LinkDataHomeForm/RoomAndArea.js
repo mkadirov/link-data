@@ -43,6 +43,7 @@ function RoomAndArea({ area, setArea, numberOfRooms, setNumberOfRooms }) {
               onChange={(e) => handleChangeRoom(e)}
               type="number"
               placeholder={isUzbek ? "Xonalar soni" : "Количество комнат"}
+              min={0}
             />
           </Grid2>
           <Grid2 size={6}>
@@ -51,6 +52,7 @@ function RoomAndArea({ area, setArea, numberOfRooms, setNumberOfRooms }) {
               onChange={(e) => handleChangeArea(e)}
               type="number"
               placeholder={isUzbek ? "Uy maydoni " : "Общая площадь"}
+              min={0}
             />
           </Grid2>
         </Grid2>

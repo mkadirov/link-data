@@ -6,12 +6,13 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
   const { isUzbek } = useContext(MyContext);
 
   const handleChange = (newValue) => {
-    setFloorOfHouse(newValue);
-    
-  };
+    const intValue = parseInt(newValue, 10);  // Convert newValue to an integer
+    setFloorOfHouse(intValue);
+};
 
   const handleChange2 = (newValue) => {
-    setFloor(newValue);
+    const intValue = parseInt(newValue, 10);
+    setFloor(intValue);
     
   };
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import HomepageRouter from '../../components/Hompage/HomepageRouter'
-import { Box } from '@mui/material'
+import { Box, Card } from '@mui/material'
 import LinkDataAutoForm from '../../components/Hompage/LinkDataAutoForm/LinkDataAutoForm'
 import MyContext from '../../components/Context/MyContext'
 import HomeForm from '../../components/Hompage/LinkDataHomeForm/HomeForm'
@@ -10,7 +10,9 @@ function Homepage() {
     const {mainPageIndex} = useContext(MyContext)
   return (
     <Box sx={{width: '100%'}}>
+        
         <HomepageRouter/>
+        
         {
            mainPageIndex==1 && (<HomeForm/>)
         }
