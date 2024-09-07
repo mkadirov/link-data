@@ -29,7 +29,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Box className="main-border" sx={{ paddingX: 2, paddingY: 1 }}>
             <input
-              onChange={(e) => setFloorOfHouse(e.target.value)}
+              onChange={(e) => handleChange(e.target.value)}
               type="number"
               value={floorOfHouse ? floorOfHouse : ""}
               placeholder={isUzbek ? "Nechanchi qavat" : "Этажность дома"}
@@ -59,7 +59,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Box className="main-border" sx={{ paddingX: 2, paddingY: 1 }}>
             <input
-              onChange={(e) => setFloor(e.target.value)}
+              onChange={(e) => handleChange2(e.target.value)}
               type="number"
               value={floor ? floor : ""}
               placeholder={isUzbek ? "Nechanchi qavat" : "Этаж квартиры"}

@@ -29,7 +29,7 @@ import { getHomePrice } from "../../../api/LinkHomeApi";
 function HomeForm() {
   const [region, setRegion] = useState({
     id: 1,
-    nameUZB: "Toshkent shaxri",
+    nameUZB: "Toshkent shahri",
     nameRUS: "Ташкент г",
   });
   const [subRegions, setSubRegions] = useState([]);
