@@ -311,7 +311,7 @@ function HomeForm() {
         setShowResultBlock(true)
         setTimeout(() => {
           setIsLoading(false);
-        }, 10000);
+        }, 4000);
       }
     };
 
@@ -447,6 +447,7 @@ function HomeForm() {
             checkData={checkData}
             sendHomeForm={sendHomeForm}
             setShowResultBlock={setShowResultBlock}
+            setIsLoading={setIsLoading}
           />
         </Grid2>
       </Grid2>
@@ -483,6 +484,7 @@ function HomeForm() {
             checkData={checkData}
             sendHomeForm={sendHomeForm}
             setShowResultBlock={setShowResultBlock}
+            setIsLoading={setIsLoading}
           />
         </Grid2>
       </Grid2>

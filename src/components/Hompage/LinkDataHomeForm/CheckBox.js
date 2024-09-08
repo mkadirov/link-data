@@ -26,7 +26,7 @@ function CheckBox({
   pricingMonth,
   pricingYear,
   checkData,
-  setShowResultBlock
+  setIsLoading
 }) {
   const { isUzbek} = useContext(MyContext);
   return (
@@ -251,7 +251,7 @@ function CheckBox({
             size="small"
             sx={{ marginBottom: 2, paddingX: 4 }}
             onClick={() => {
-                
+                setIsLoading(true)
                 checkData()
             }}
           >
