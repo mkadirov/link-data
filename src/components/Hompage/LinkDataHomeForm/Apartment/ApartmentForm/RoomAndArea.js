@@ -1,6 +1,7 @@
 import { Box, Grid2 } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
+
 
 function RoomAndArea({ area, setArea, numberOfRooms, setNumberOfRooms }) {
   const { isUzbek } = useContext(MyContext);

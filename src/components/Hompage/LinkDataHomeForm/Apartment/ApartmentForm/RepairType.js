@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
 import { Box, Grid2, Typography } from "@mui/material";
-import { marketTypeList, repairTypeList } from "../../../data/RestData";
+import { marketTypeList, repairTypeList } from "../../../../../data/RestData";
 import MainDropDown from "./MainDropDown";
 import { grey } from "@mui/material/colors";
 
@@ -27,7 +27,7 @@ function RepairType({ setRepairType, repairType }) {
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor:
-                      repairType?.id == item.id ? "green" : "white",
+                      repairType?.id == item.id ? "#003049" : "white",
                     color: repairType?.id == item.id ? "white" : "black",
                     cursor: "pointer",
                   }}

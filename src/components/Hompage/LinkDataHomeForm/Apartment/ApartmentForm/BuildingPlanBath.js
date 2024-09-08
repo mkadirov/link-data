@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import { bathroomTypeList, buildingTypeList, planTypeList, repairTypeList } from "../../../data/RestData";
-import MainDropDown from "./MainDropDown";
-import MyContext from "../../Context/MyContext";
+import { bathroomTypeList, buildingTypeList, planTypeList, repairTypeList } from "../../../../../data/RestData";
+
+import MyContext from "../../../../Context/MyContext";
 import { grey } from "@mui/material/colors";
+import MainDropDown from "./MainDropDown";
 
 function BuildingPlanBath({ buildingType, setBuildingType, planType, setPlanType, bathroomType, setBathroomType }) {
   const { isUzbek } = useContext(MyContext);

@@ -8,8 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { districtsList, subRegionsList } from "../../../data/Location";
-import MyContext from "../../Context/MyContext";
+import { districtsList, subRegionsList } from "../../../../../data/Location";
+
 import Location from "./Location";
 import RoomAndArea from "./RoomAndArea";
 import FloorInfo from "./FloorInfo";
@@ -22,10 +22,12 @@ import Owner from "./Owner";
 import Rebate from "./Rebate";
 import Commission from "./Commission";
 import Date from "./Date";
-import CheckBox from "./CheckBox";
-import MeterSquare from "../../Global/Symbols/MeterSquare";
+
+import MeterSquare from "../../../../Global/Symbols/MeterSquare";
 import Equipped from "./Equipped";
-import { getHomePrice } from "../../../api/LinkHomeApi";
+import { getHomePrice } from "../../../../../api/LinkHomeApi";
+import CheckBox from "./CheckBox";
+import MyContext from "../../../../Context/MyContext";
 
 function HomeForm() {
   const [region, setRegion] = useState({
@@ -60,11 +62,10 @@ function HomeForm() {
   const [owner, setOwner] = useState("Xususiy");
   const [rebate, setRebate] = useState(false);
   const [commission, setCommission] = useState(false);
-  const [pricingMonth, setPricingMonth] = useState("");
+  const [pricingMonth, setPricingMonth] = useState(9);
   const [pricingYear, setPricingYear] = useState(2024);
   const [isEquipped, setIsEquipped] = useState(true);
   const [result, setResult] = useState("");
-  const [resultString, setResultString] = useState("")
   const [showResultBlock, setShowResultBlock] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -242,7 +243,7 @@ function HomeForm() {
       );
       return;
     }
-
+    setIsLoading(true)
     sendHomeForm();
   };
 
@@ -514,7 +515,9 @@ function HomeForm() {
               </Typography>
 
               <Button variant="contained" size="small" sx={{ paddingX: 3 }}>
-                To‘liq hisobotni yuklab olish
+                {
+                  isUzbek? "To‘liq hisobotni yuklab olish" : "Скачать полный отчет"
+                }
               </Button>
             </Box>
             <Box sx={{display: isLoading? "flex" : "none"}} justifyContent={"center"} alignItems={"center"} paddingY={3}>

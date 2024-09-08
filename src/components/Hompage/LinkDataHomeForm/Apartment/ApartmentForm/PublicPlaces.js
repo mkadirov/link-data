@@ -1,32 +1,30 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
 import MainDropDown from "./MainDropDown";
-import { furnitureArray, publicPlaceList } from "../../../data/RestData";
+import { publicPlaceList } from "../../../../../data/RestData";
 import ClearIcon from "@mui/icons-material/Clear";
 
-function Furniture({ addFurniture, deleteFurniture, clearFurnitureList, furniture}) {
+function PublicPlaces({ addPublicPlace, clearPublicPlaceList, publicPlaces, deletePublicPlace}) {
   const { isUzbek } = useContext(MyContext);
   return (
     <Box marginTop={3}>
-      
-
       <Box className="main-border" sx={{ paddingY: '4px', paddingX: 1 }}>
         <Box display={"flex"} justifyContent={"space-between"} alignItems={'center'}>
           <Typography sx={{ fontWeight: "bold" }}>
-            {isUzbek ? "Uyda nimalar bor?" : "Что есть дома?"}
+            {isUzbek ? "Uy atrofida nimalar bor?" : "Что вокруг дома?"}
           </Typography>
           <Box display={"flex"} gap={1}>
             <ClearIcon
               sx={{ color: "red", cursor: 'pointer' }}
-              onClick={() => clearFurnitureList()}
+              onClick={() => clearPublicPlaceList()}
             />
-            <MainDropDown options={furnitureArray} setItem={addFurniture} />
+            <MainDropDown options={publicPlaceList} setItem={addPublicPlace} />
           </Box>
         </Box>
 
         <Box>
-          {furniture.map((item) => {
+          {publicPlaces.map((item) => {
             return (
              <Box key={item.nameUZB} sx={{display: 'inline-block'}}>
                  <Box
@@ -41,7 +39,7 @@ function Furniture({ addFurniture, deleteFurniture, clearFurnitureList, furnitur
                 }}
               >
                 <Typography>{isUzbek ? item.nameUZB : item.nameRUS}</Typography>
-                <ClearIcon sx={{ color: "red", cursor: 'pointer' }} onClick={() => deleteFurniture(item)} />
+                <ClearIcon sx={{ color: "red", cursor: 'pointer' }} onClick={() => deletePublicPlace(item)} />
               </Box>
              </Box>
             );
@@ -52,4 +50,4 @@ function Furniture({ addFurniture, deleteFurniture, clearFurnitureList, furnitur
   );
 }
 
-export default Furniture;
+export default PublicPlaces;

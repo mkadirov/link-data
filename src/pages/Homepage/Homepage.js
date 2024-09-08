@@ -3,8 +3,9 @@ import HomepageRouter from '../../components/Hompage/HomepageRouter'
 import { Box, Card } from '@mui/material'
 import LinkDataAutoForm from '../../components/Hompage/LinkDataAutoForm/LinkDataAutoForm'
 import MyContext from '../../components/Context/MyContext'
-import HomeForm from '../../components/Hompage/LinkDataHomeForm/HomeForm'
+import HomeForm from '../../components/Hompage/LinkDataHomeForm/Apartment/ApartmentForm/HomeForm'
 import AssetsForm from '../../components/Hompage/LinkDataAssetsForm/AssetsForm'
+import ApartmentRouter from '../../components/Hompage/LinkDataHomeForm/ApartmentRouter'
 
 function Homepage() {
     const {mainPageIndex} = useContext(MyContext)
@@ -14,7 +15,7 @@ function Homepage() {
         <HomepageRouter/>
         
         {
-           mainPageIndex==1 && (<HomeForm/>)
+           mainPageIndex==1 && (<ApartmentRouter/>) 
         }
         {
            mainPageIndex==2 && (<LinkDataAutoForm/>)

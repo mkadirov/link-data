@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
 import { Box, Grid2, Typography } from "@mui/material";
-import { marketTypeList} from "../../../data/RestData";
+import { marketTypeList } from "../../../../../data/RestData";
+import MyContext from "../../../../Context/MyContext";
+
 
 function MarketType({ setMarketType, marketType }) {
   const { isUzbek } = useContext(MyContext);
@@ -14,7 +15,7 @@ function MarketType({ setMarketType, marketType }) {
       <Grid2 container spacing={2}>
         {marketTypeList.map((item) => {
           return (
-            <Grid2 item size={4} key={item.nameUZB}>
+            <Grid2 item size={{xs: 6, md: 4}} key={item.nameUZB}>
               <Box
                 className="main-border"
                 sx={{
@@ -23,7 +24,7 @@ function MarketType({ setMarketType, marketType }) {
                   justifyContent: "center",
                   alignItems: "center",
                   backgroundColor:
-                    marketType?.id == item.id ? "green" : "white",
+                    marketType?.id == item.id ? "#003049" : "white",
                   color: marketType?.id == item.id ? "white" : "black",
                   cursor: "pointer",
                 }}

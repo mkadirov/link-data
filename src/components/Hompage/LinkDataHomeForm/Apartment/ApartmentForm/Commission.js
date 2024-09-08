@@ -1,13 +1,15 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
 
-function Owner({ owner, setOwner }) {
-  const { isUzbek } = useContext(MyContext);
+
+function Commission({commission, setCommission}) {
+
+    const { isUzbek } = useContext(MyContext);
   return (
     <Box>
       <Typography sx={{ fontWeight: "bold", marginTop: 2 }}>
-    {isUzbek ? "Kim egalik qiladi?" : "Кто владеет?"}
+    {isUzbek ? "Komissiya bormi?" : "Есть ли комиссия?"}
       </Typography>
 
       <Grid2 container spacing={2}>
@@ -19,14 +21,14 @@ function Owner({ owner, setOwner }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: owner == "Xususiy" ? "green" : "white",
-              color: owner == "Xususiy" ? "white" : "black",
+              backgroundColor: commission ? "#003049" : "white",
+              color: commission ? "white" : "black",
               cursor: "pointer",
             }}
-            onClick={() => setOwner("Xususiy")}
+            onClick={() => setCommission(true)}
           >
             <Typography sx={{ fontSize: "13px" }}>
-              {isUzbek ? "Xususiy" : "Частный"}
+              {isUzbek ? "Ha" : "Да"}
             </Typography>
           </Box>
         </Grid2>
@@ -39,20 +41,20 @@ function Owner({ owner, setOwner }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: owner == "Biznes" ? "green" : "white",
-              color: owner == "Biznes" ? "white" : "black",
+              backgroundColor: !commission ? "#003049" : "white",
+              color: !commission ? "white" : "black",
               cursor: "pointer",
             }}
-            onClick={() => setOwner("Biznes")}
+            onClick={() => setCommission(false)}
           >
             <Typography sx={{ fontSize: "13px" }}>
-              {isUzbek ? "Biznes" : "Бизнес"}
+              {isUzbek ? "Yo'q" : "Нет"}
             </Typography>
           </Box>
         </Grid2>
       </Grid2>
     </Box>
-  );
+  )
 }
 
-export default Owner;
+export default Commission

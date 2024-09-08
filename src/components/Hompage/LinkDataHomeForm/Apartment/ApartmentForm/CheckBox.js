@@ -1,8 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
 import { grey } from "@mui/material/colors";
-import MeterSquare from "../../Global/Symbols/MeterSquare";
+
+import MyContext from "../../../../Context/MyContext";
+import MeterSquare from "../../../../Global/Symbols/MeterSquare";
 
 function CheckBox({
   region,
@@ -251,11 +252,13 @@ function CheckBox({
             size="small"
             sx={{ marginBottom: 2, paddingX: 4 }}
             onClick={() => {
-                setIsLoading(true)
+                
                 checkData()
             }}
           >
-            Baholash
+            {
+              isUzbek? "Baholash" : "Узнать цену"
+            }
           </Button>
         </Box>
       </Box>

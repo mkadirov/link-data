@@ -1,18 +1,19 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
 
-function Equipped({isEquipped, setIsEquipped}) {
+
+function Rebate({rebate, setRebate}) {
 
     const { isUzbek } = useContext(MyContext);
   return (
     <Box>
-      <Typography marginTop={2} sx={{ fontWeight: "bold" }}>
-            {isUzbek ? "Uy jihozlanganmi?" : "Квартира оснащена?"}
+      <Typography sx={{ fontWeight: "bold", marginTop: 2 }}>
+    {isUzbek ? "Kelishsa bo'ladimi?" : "Можно ли договориться?"}
       </Typography>
 
       <Grid2 container spacing={2}>
-        <Grid2 item size={3}>
+        <Grid2 item size={4}>
           <Box
             className="main-border"
             sx={{
@@ -20,11 +21,11 @@ function Equipped({isEquipped, setIsEquipped}) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: isEquipped ? "green" : "white",
-              color: isEquipped ? "white" : "black",
+              backgroundColor: rebate ? "#003049" : "white",
+              color: rebate ? "white" : "black",
               cursor: "pointer",
             }}
-            onClick={() => setIsEquipped(true)}
+            onClick={() => setRebate(true)}
           >
             <Typography sx={{ fontSize: "13px" }}>
               {isUzbek ? "Ha" : "Да"}
@@ -32,7 +33,7 @@ function Equipped({isEquipped, setIsEquipped}) {
           </Box>
         </Grid2>
 
-        <Grid2 item size={3}>
+        <Grid2 item size={4}>
           <Box
             className="main-border"
             sx={{
@@ -40,11 +41,11 @@ function Equipped({isEquipped, setIsEquipped}) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: !isEquipped ? "green" : "white",
-              color: !isEquipped ? "white" : "black",
+              backgroundColor: !rebate ? "#003049" : "white",
+              color: !rebate ? "white" : "black",
               cursor: "pointer",
             }}
-            onClick={() => setIsEquipped(false)}
+            onClick={() => setRebate(false)}
           >
             <Typography sx={{ fontSize: "13px" }}>
               {isUzbek ? "Yo'q" : "Нет"}
@@ -56,4 +57,4 @@ function Equipped({isEquipped, setIsEquipped}) {
   )
 }
 
-export default Equipped
+export default Rebate

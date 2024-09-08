@@ -1,9 +1,10 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import MainDropDown from "./MainDropDown";
-import MyContext from "../../Context/MyContext";
 import { grey } from "@mui/material/colors";
-import { regions } from "../../../data/Location";
+import MyContext from "../../../../Context/MyContext";
+import { regions } from "../../../../../data/Location";
+
 
 function Location({
   subRegion,

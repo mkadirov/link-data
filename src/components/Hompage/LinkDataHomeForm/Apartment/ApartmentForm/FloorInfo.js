@@ -1,6 +1,6 @@
 import { Box, Grid2, Slider, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import MyContext from "../../Context/MyContext";
+import MyContext from "../../../../Context/MyContext";
 
 function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
   const { isUzbek } = useContext(MyContext);
@@ -32,7 +32,7 @@ function FloorInfo({ floor, setFloor, floorOfHouse, setFloorOfHouse }) {
               onChange={(e) => handleChange(e.target.value)}
               type="number"
               value={floorOfHouse ? floorOfHouse : ""}
-              placeholder={isUzbek ? "Nechanchi qavat" : "Этажность дома"}
+              placeholder={isUzbek ? "Uy qavatlari soni" : "Этажность дома"}
               min={0}
             />
           </Box>
