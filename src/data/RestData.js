@@ -1,18 +1,18 @@
 export const publicPlaceList = [
-    { "id": 1, "nameUZB": "Maktab", "nameRUS": "Школа" },
-    { "id": 2, "nameUZB": "Supermarket", "nameRUS": "Супермаркет" },
-    { "id": 3, "nameUZB": "Do'kon", "nameRUS": "Магазин" },
-    { "id": 4, "nameUZB": "Avtoturargoh", "nameRUS": "Парковка" },
-    { "id": 5, "nameUZB": "Shifoxona", "nameRUS": "Больница" },
-    { "id": 6, "nameUZB": "Poliklinika", "nameRUS": "Поликлиника" },
-    { "id": 7, "nameUZB": "Bekat", "nameRUS": "Остановка" },
-    { "id": 8, "nameUZB": "Bolalar maydonchasi", "nameRUS": "Детская площадка" },
-    { "id": 9, "nameUZB": "Restoran", "nameRUS": "Ресторан" },
-    { "id": 10, "nameUZB": "Kafe", "nameRUS": "Кафе" },
-    { "id": 11, "nameUZB": "Ko'ngilochar maskanlar", "nameRUS": "Развлекательные заведения" },
-    { "id": 12, "nameUZB": "Bog'cha", "nameRUS": "Детский сад" },
-    { "id": 13, "nameUZB": "Yashil hudud", "nameRUS": "Зеленая зона" },
-    { "id": 14, "nameUZB": "Park", "nameRUS": "Парк" }
+    { "id": 1, "nameUZB": "Maktab", "nameRUS": "Школа", value: "shkola" },
+    { "id": 2, "nameUZB": "Supermarket", "nameRUS": "Супермаркет", value: "supermarket" },
+    { "id": 3, "nameUZB": "Do'kon", "nameRUS": "Магазин", value: "magazini" },
+    { "id": 4, "nameUZB": "Avtoturargoh", "nameRUS": "Парковка", value: "stoyanka" },
+    { "id": 5, "nameUZB": "Shifoxona", "nameRUS": "Больница", value: "bolnitsa" },
+    { "id": 6, "nameUZB": "Poliklinika", "nameRUS": "Поликлиника", value: "poliklinika" },
+    { "id": 7, "nameUZB": "Bekat", "nameRUS": "Остановка", value: "ostonovki" },
+    { "id": 8, "nameUZB": "Bolalar maydonchasi", "nameRUS": "Детская площадка", value: "detskaya_ploshatka" },
+    { "id": 9, "nameUZB": "Restoran", "nameRUS": "Ресторан", value: "restorani" },
+    { "id": 10, "nameUZB": "Kafe", "nameRUS": "Кафе", value: "kafe" },
+    { "id": 11, "nameUZB": "Ko'ngilochar maskanlar", "nameRUS": "Развлекательные заведения", value: "razvlekatelnie_zavedeniya" },
+    { "id": 12, "nameUZB": "Bog'cha", "nameRUS": "Детский сад", value: "detskiy_sad" },
+    { "id": 13, "nameUZB": "Yashil hudud", "nameRUS": "Зеленая зона", value: "zelyonaya_zona" },
+    { "id": 14, "nameUZB": "Park", "nameRUS": "Парк", value: "park" }
 ]
 
 
@@ -42,26 +42,26 @@ export const bathroomTypeList = [
 ]
 
 export const furnitureArray = [
-    { id: 1, nameUZB: "Sovutgich", nameRUS: "Холодильник" },
-    { id: 2, nameUZB: "Telefon", nameRUS: "Телефон" },
-    { id: 3, nameUZB: "Oshxona", nameRUS: "Кухня" },
-    { id: 4, nameUZB: "Kabel TV", nameRUS: "Кабельное ТВ" },
-    { id: 5, nameUZB: "Internet", nameRUS: "Интернет" },
-    { id: 6, nameUZB: "Balkon", nameRUS: "Балкон" },
-    { id: 7, nameUZB: "Kir yuvish mashinasi", nameRUS: "Стиральная машина" },
-    { id: 8, nameUZB: "Konditsioner", nameRUS: "Кондиционер" },
-    { id: 9, nameUZB: "Televizor", nameRUS: "Телевизор" }
+    { id: 1, nameUZB: "Sovutgich", nameRUS: "Холодильник", value: "xolodelnik" },
+    { id: 2, nameUZB: "Telefon", nameRUS: "Телефон", value: "telefon" },
+    { id: 3, nameUZB: "Oshxona", nameRUS: "Кухня", value: "kuxniya" },
+    { id: 4, nameUZB: "Kabel TV", nameRUS: "Кабельное ТВ", value: "kabelnoe_tv" },
+    { id: 5, nameUZB: "Internet", nameRUS: "Интернет", value: "internet" },
+    { id: 6, nameUZB: "Balkon", nameRUS: "Балкон", value: "balkon" },
+    { id: 7, nameUZB: "Kir yuvish mashinasi", nameRUS: "Стиральная машина", value: "stiralnaya_mashina" },
+    { id: 8, nameUZB: "Konditsioner", nameRUS: "Кондиционер", value: "konditsioner" },
+    { id: 9, nameUZB: "Televizor", nameRUS: "Телевизор", value: "televizor" }
 ];
 
 export const repairTypeList = [
     { id: 1, nameUZB: "Zo'r", nameRUS: "Отлично" },
-    { id: 2, nameUZB: "Qoniqarli", nameRUS: "Удовлетворительно" },
+    { id: 2, nameUZB: "Yaxshi", nameRUS: "Удовлетворительно" },
     { id: 3, nameUZB: "Qoniqarsiz", nameRUS: "Неудовлетворительно" }
 ];
 
 export const marketTypeList = [
-    { id: 1, nameUZB: "Birlamchi", nameRUS: "Первичный" },
-    { id: 2, nameUZB: "Ikkilamchi", nameRUS: "Вторичный" }
+    { id: 1, nameUZB: "Yangi qurilgan uylar", nameRUS: "Первичный" },
+    { id: 2, nameUZB: "Ikkilamchi bozor", nameRUS: "Вторичный" }
     
 ]
 

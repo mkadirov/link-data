@@ -10,13 +10,15 @@ import {
 import "./App.css";
 import Header from "./components/Header/Header";
 import MyContext from "./components/Context/MyContext";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Homepage from "./pages/Homepage/Homepage";
 import MainFooter from "./components/Global/Footer/MainFooter";
 
 function App() {
   const [isUzbek, setIsUzbek] = useState(true);
   const [mainPageIndex, setMainPageIndex] = useState(1);
+
+  
 
   const theme = createTheme({
     palette: {
@@ -38,6 +40,7 @@ function App() {
         setIsUzbek,
         mainPageIndex,
         setMainPageIndex,
+       
       }}
     >
       <ThemeProvider theme={theme}>
@@ -49,7 +52,9 @@ function App() {
             </Grid2>
           </Grid2>
 
+         
           <MainFooter/>
+          
         </Box>
       </ThemeProvider>
     </MyContext.Provider>

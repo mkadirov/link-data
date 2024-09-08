@@ -25,11 +25,10 @@ function CheckBox({
   isEquipped,
   pricingMonth,
   pricingYear,
-  scrollToResult,
   checkData,
-  sendHomeForm
+  setShowResultBlock
 }) {
-  const { isUzbek } = useContext(MyContext);
+  const { isUzbek} = useContext(MyContext);
   return (
    
         <Box className="main-border" sx={{ height: "100%", width: {xs: '100%', md: "90%"} }}>
@@ -252,7 +251,7 @@ function CheckBox({
             size="small"
             sx={{ marginBottom: 2, paddingX: 4 }}
             onClick={() => {
-                scrollToResult()
+                
                 checkData()
             }}
           >
