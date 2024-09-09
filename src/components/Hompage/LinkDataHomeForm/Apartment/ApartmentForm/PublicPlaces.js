@@ -12,7 +12,7 @@ function PublicPlaces({ addPublicPlace, clearPublicPlaceList, publicPlaces, dele
       <Box className="main-border" sx={{ paddingY: '4px', paddingX: 1 }}>
         <Box display={"flex"} justifyContent={"space-between"} alignItems={'center'}>
           <Typography sx={{ fontWeight: "bold" }}>
-            {isUzbek ? "Uy atrofida nimalar bor?" : "Что вокруг дома?"}
+            {isUzbek ? "Uy atrofida nimalar bor?" : "Инфраструктура вокруг дома?"}
           </Typography>
           <Box display={"flex"} gap={1}>
             <ClearIcon

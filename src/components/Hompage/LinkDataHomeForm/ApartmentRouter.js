@@ -24,7 +24,7 @@ function ApartmentRouter() {
         <Grid2 item size={{xs: 6, md: 4}}>
           
           <Button variant={!isApartment? "contained" : "outlined"} size="small" onClick={() => setIsApartment(false)} fullWidth>
-          {isUzbek ? "Hovli uy" : "Участка"}
+          {isUzbek ? "Hovli uy" : "Частный дом"}
           </Button>
         </Grid2>
       </Grid2>

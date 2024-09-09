@@ -33,7 +33,7 @@ function HomeForm() {
   const [region, setRegion] = useState({
     id: 1,
     nameUZB: "Toshkent shahri",
-    nameRUS: "Ташкент г",
+    nameRUS: "г. Ташкент",
   });
   const [subRegions, setSubRegions] = useState([]);
   const [subRegion, setSubRegion] = useState("");

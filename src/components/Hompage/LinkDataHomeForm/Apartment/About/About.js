@@ -1,12 +1,19 @@
-import React from 'react'
-import ComingSoonPage from '../../../../Global/ComingSoonPage'
+import React, { useContext } from "react";
+import { Box } from "@mui/material";
+import InfoUZB from "./InfoUZB";
+import MyContext from "../../../../Context/MyContext";
+import InfoRUS from "./InfoRUS";
 
-function About() {
+
+const About = () => {
+  const {isUzbek} = useContext(MyContext)
   return (
-    <div>
-        <ComingSoonPage/>
-    </div>
-  )
-}
+    <Box>
+        {
+          isUzbek? (<InfoUZB/>) : (<InfoRUS/>)
+        }
+    </Box>
+  );
+};
 
-export default About
+export default About;

@@ -12,7 +12,7 @@ function BuildingPlanBath({ buildingType, setBuildingType, planType, setPlanType
   return (
     <Box>
       <Typography sx={{ fontWeight: "bold", marginTop: 2 }}>
-        {isUzbek ? "Qurilish turi" : "Тип строительства"}
+        {isUzbek ? "Qurilish turi" : "Тип конструкции"}
       </Typography>
       <Box
         display={"flex"}
@@ -24,7 +24,7 @@ function BuildingPlanBath({ buildingType, setBuildingType, planType, setPlanType
         <Typography textAlign={"center"} sx={{ flexGrow: 1 }}>
           {buildingType == "" ? (
             <Typography sx={{ color: grey[500] }}>
-              {isUzbek ? "Qurilish turi" : "Тип строительства"}
+              {isUzbek ? "Qurilish turi" : "Тип конструкции"}
             </Typography>
           ) : isUzbek ? (
             buildingType.nameUZB

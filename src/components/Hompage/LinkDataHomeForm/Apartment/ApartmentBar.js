@@ -7,6 +7,7 @@ import MarketPowerBI from "./MarketPowerBI/MarketPowerBI";
 import Pragnoz from "./Pragnoz/Pragnoz";
 import About from "./About/About";
 
+
 function ApartmentBar() {
   const { isUzbek } = useContext(MyContext);
   const [barIndex, setBarIndex] = useState(1);

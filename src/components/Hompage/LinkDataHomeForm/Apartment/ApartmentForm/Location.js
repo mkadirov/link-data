@@ -35,7 +35,7 @@ function Location({
               <Typography textAlign={"center"} sx={{ flexGrow: 1 }}>
                 {region == "" ? (
                   <Typography sx={{ color: grey[500] }}>
-                    {isUzbek ? "Hududni tanlag" : "Выберите регион"}
+                    {isUzbek ? "Hududni tanlang" : "Выберите регион"}
                   </Typography>
                 ) : isUzbek ? (
                   region.nameUZB
@@ -59,7 +59,7 @@ function Location({
               <Typography textAlign={"center"} sx={{ flexGrow: 1 }}>
                 {subRegion == "" ? (
                   <Typography sx={{ color: grey[500] }}>
-                    {isUzbek ? "Tumanni tanlag" : "Выберите район"}
+                    {isUzbek ? "Tumanni tanlang" : "Выберите район"}
                   </Typography>
                 ) : isUzbek ? (
                   subRegion.nameUZB
@@ -79,7 +79,7 @@ function Location({
               <Typography textAlign={"center"} sx={{ flexGrow: 1 }}>
                 {district == "" ? (
                   <Typography sx={{ color: grey[500] }}>
-                    {isUzbek ? "Mahallani tanlag" : "Выберите населённый пункт"}
+                    {isUzbek ? "Mahallani tanlang" : "Выберите махаллю"}
                   </Typography>
                 ) : isUzbek ? (
                   district.nameUZB

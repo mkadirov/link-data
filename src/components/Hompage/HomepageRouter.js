@@ -29,7 +29,7 @@ function HomepageRouter() {
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" } }}>
               {isUzbek
                 ? "Uylarni onlayn avtomatik"
-                : "Онлайн автоматическая платформа"}
+                : "Онлайн платформа автоматической"}
             </Typography>
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" } }}>
               {isUzbek ? "baholash platformasi" : "оценки недвижимости"}
@@ -57,7 +57,7 @@ function HomepageRouter() {
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" },}}>
               {isUzbek
                 ? "Avtomobilni onlayn avtomatik"
-                : "Онлайн автоматическая платформа"}
+                : "Онлайн платформа автоматической"}
             </Typography>
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" } }}>
               {isUzbek ? "baholash platformasi" : "оценки автомобилей"}
@@ -85,10 +85,10 @@ function HomepageRouter() {
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" },}}>
               {isUzbek
                 ? "Boshqa turdagi avtivlarni"
-                : "Онлайн автоматическая оценка"}
+                : "Онлайн платформа автоматической"}
             </Typography>
             <Typography sx={{ fontSize: { xs: "8px", md: "14px" } }}>
-              {isUzbek ? "onlayn avtomatik baholash" : "других типов активов"}
+              {isUzbek ? "onlayn avtomatik baholash" : "оценки других видов активов"}
             </Typography>
           </Box>
         </Grid2>

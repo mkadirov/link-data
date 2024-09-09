@@ -9,6 +9,16 @@ function Date({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
   const handleChangeMonth = (e) => {
     let value = e.target.value;
     let formattedValue = value ? parseInt(value, 10) : "";
+  
+    if (formattedValue !== "") {
+      // If the value is less than 1, set it to 1. If greater than 12, set it to 12.
+      if (formattedValue < 1) {
+        formattedValue = 1;
+      } else if (formattedValue > 12) {
+        formattedValue = 12;
+      }
+    }
+  
     setPricingMonth(formattedValue);
   };
   return (
