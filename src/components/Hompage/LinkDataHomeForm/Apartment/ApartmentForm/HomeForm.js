@@ -28,12 +28,14 @@ import Equipped from "./Equipped";
 import { getHomePrice } from "../../../../../api/LinkHomeApi";
 import CheckBox from "./CheckBox";
 import MyContext from "../../../../Context/MyContext";
+import pdfFile from "../../../../../data/pdf/pdf_home.pdf";
+import { editPdf } from "../../../../PdfEditor/PdfEditor";
 
 function HomeForm() {
   const [region, setRegion] = useState({
     id: 1,
     nameUZB: "Toshkent shahri",
-    nameRUS: "г. Ташкент",
+    nameRUS: "Город Ташкент",
   });
   const [subRegions, setSubRegions] = useState([]);
   const [subRegion, setSubRegion] = useState("");
@@ -43,7 +45,7 @@ function HomeForm() {
   const [floorOfHouse, setFloorOfHouse] = useState("");
   const [area, setArea] = useState("");
   const [floor, setFloor] = useState("");
-  const { isUzbek} = useContext(MyContext);
+  const { isUzbek } = useContext(MyContext);
   const [publicPlaces, setPublicPlaces] = useState([]);
   const [buildingType, setBuildingType] = useState("");
   const [planType, setPlanType] = useState("");
@@ -67,10 +69,76 @@ function HomeForm() {
   const [isEquipped, setIsEquipped] = useState(true);
   const [result, setResult] = useState("");
   const [showResultBlock, setShowResultBlock] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const resultRef = useRef(null);
 
+  const saveResultAsPdf = () => {
+    const resultString = formatNumberFromRight(result)
+    const regionName = isUzbek ? region?.nameUZB : region?.nameRUS;
+    const subRegionName = isUzbek ? subRegion?.nameUZB : subRegion.nameRUS;
+    const districtName = isUzbek ? district?.nameUZB : district?.nameRUS;
+
+    const newArray = publicPlaces.map((item) =>
+      isUzbek ? item.nameUZB : item.nameRUS
+    );
+
+    const newFurnitureArray = furniture.map((item) =>
+      isUzbek ? item.nameUZB : item.nameRUS
+    );
+    const equipped = isUzbek
+      ? isEquipped
+        ? "Xa"
+        : "Yo'q"
+      : isEquipped
+      ? "Да"
+      : "Нет";
+    const buildingTypeName = isUzbek? buildingType.nameUZB : buildingType.nameRUS
+    const planTypeName = isUzbek ? planType.nameUZB : planType.nameRUS
+    const bathroomTypeTypeName = isUzbek ? bathroomType.nameUZB : bathroomType.nameRUS
+    const repairTypeName = isUzbek ? repairType.nameUZB : repairType.nameRUS
+    const marketTypeName = isUzbek ? marketType.nameUZB : marketType.nameRUS
+    const rebateType = isUzbek
+      ? rebate
+        ? "Xa"
+        : "Yo'q"
+      : isEquipped
+      ? "Да"
+      : "Нет";
+      const commisionName = isUzbek
+      ? commission
+        ? "Xa"
+        : "Yo'q"
+      : isEquipped
+      ? "Да"
+      : "Нет";
+
+    editPdf(
+      pdfFile,
+      resultString,
+      regionName,
+      subRegionName,
+      districtName,
+      numberOfRooms,
+      area,
+      floor,
+      floorOfHouse,
+      newArray,
+      equipped,
+      newFurnitureArray,
+      buildingTypeName,
+      planTypeName,
+      bathroomTypeTypeName,
+      repairTypeName,
+      marketTypeName,
+      owner,
+      rebateType,
+      commisionName,
+      pricingMonth,
+      pricingYear
+
+    );
+  };
 
   const scrollToResult = () => {
     if (resultRef.current) {
@@ -243,28 +311,28 @@ function HomeForm() {
       );
       return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     sendHomeForm();
   };
 
   const formatNumberFromRight = (number) => {
     // Ensure the input is an integer
     number = Math.floor(number); // In case of floats, this ensures the number is an integer
-  
+
     // Convert the integer to a string, reverse it, and format it
-    let numStr = number.toString().split('').reverse().join('');
-    
+    let numStr = number.toString().split("").reverse().join("");
+
     // Add spaces after every 3 digits
-    let formattedStr = numStr.replace(/\d{3}(?=\d)/g, '$& ');
-  
+    let formattedStr = numStr.replace(/\d{3}(?=\d)/g, "$& ");
+
     // Reverse the string back and return it
-    return formattedStr.split('').reverse().join('');
+    return formattedStr.split("").reverse().join("");
   };
 
   const priceFrom = (number) => {
     // Multiply the number by 0.964
     const result = number * 0.964;
-  
+
     // Return the result as an integer using Math.floor (you can also use Math.round or Math.ceil)
     return Math.floor(result);
   };
@@ -272,7 +340,7 @@ function HomeForm() {
   const priceTo = (number) => {
     // Multiply the number by 0.964
     const result = number * 1.036;
-  
+
     // Return the result as an integer using Math.floor (you can also use Math.round or Math.ceil)
     return Math.floor(result);
   };
@@ -301,6 +369,7 @@ function HomeForm() {
       pricingMonth: pricingMonth,
       floor: floor,
       buildType: buildingType.nameUZB,
+      commission: commission? 1 : 0
     };
 
     const fetchData = async () => {
@@ -309,7 +378,7 @@ function HomeForm() {
       if (res.success) {
         console.log(res.data?.object);
         setResult(res.data.object);
-        setShowResultBlock(true)
+        setShowResultBlock(true);
         setTimeout(() => {
           setIsLoading(false);
         }, 4000);
@@ -320,8 +389,8 @@ function HomeForm() {
   };
 
   useEffect(() => {
-    scrollToResult()
-  }, [showResultBlock])
+    scrollToResult();
+  }, [showResultBlock]);
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -502,29 +571,46 @@ function HomeForm() {
               ? "Uyning baholangan bozor narxi"
               : "Оценочная рыночная стоимость квартиры"}
           </Typography>
-          <Box className="main-border" sx={{ marginBottom: 5, padding: 2}}>
-
-            <Box textAlign={"center"} sx={{display: isLoading? 'none' : 'block' }}>
+          <Box className="main-border" sx={{ marginBottom: 5, padding: 2 }}>
+            <Box
+              textAlign={"center"}
+              sx={{ display: isLoading ? "none" : "block" }}
+            >
               <Typography variant="h4" fontWeight={"bold"}>
                 {formatNumberFromRight(result)}$
               </Typography>
               <Typography>
                 {isUzbek
-                  ? `${formatNumberFromRight(priceFrom(result))} - ${formatNumberFromRight(priceTo(result))} orasida baholanishi mumkin`
-                  : `Может быть оценено примерно в ${formatNumberFromRight(priceFrom(result))} - ${formatNumberFromRight(priceTo(result))}`}
+                  ? `${formatNumberFromRight(
+                      priceFrom(result)
+                    )} - ${formatNumberFromRight(
+                      priceTo(result)
+                    )} orasida baholanishi mumkin`
+                  : `Может быть оценено примерно в ${formatNumberFromRight(
+                      priceFrom(result)
+                    )} - ${formatNumberFromRight(priceTo(result))}`}
               </Typography>
 
-              <Button variant="contained" size="small" sx={{ paddingX: 3 }}>
-                {
-                  isUzbek? "To‘liq hisobotni yuklab olish" : "Скачать полный отчет"
-                }
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ paddingX: 3 }}
+                onClick={() => saveResultAsPdf()}
+              >
+                {isUzbek
+                  ? "To‘liq hisobotni yuklab olish"
+                  : "Скачать полный отчет"}
               </Button>
             </Box>
-            <Box sx={{display: isLoading? "flex" : "none"}} justifyContent={"center"} alignItems={"center"} paddingY={3}>
-              <CircularProgress/>
+            <Box
+              sx={{ display: isLoading ? "flex" : "none" }}
+              justifyContent={"center"}
+              alignItems={"center"}
+              paddingY={3}
+            >
+              <CircularProgress />
             </Box>
           </Box>
-         
         </Grid2>
       </Grid2>
     </Box>
