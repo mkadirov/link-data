@@ -1,6 +1,8 @@
 export const regions = [
     {
-       "id": 1, "nameUZB": "Toshkent shahri", "nameRUS": "Город Ташкент"
+        id: 1,
+        nameUZB: "Toshkent shahri",
+        nameRUS: "Город Ташкент"
     }
 ]
 

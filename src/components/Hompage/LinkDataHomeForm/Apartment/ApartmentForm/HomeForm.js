@@ -35,8 +35,8 @@ function HomeForm() {
   const [region, setRegion] = useState({
     id: 1,
     nameUZB: "Toshkent shahri",
-    nameRUS: "Город Ташкент",
-  });
+    nameRUS: "Город Ташкент"
+});
   const [subRegions, setSubRegions] = useState([]);
   const [subRegion, setSubRegion] = useState("");
   const [districts, setDistricts] = useState([]);
@@ -591,16 +591,21 @@ function HomeForm() {
                     )} - ${formatNumberFromRight(priceTo(result))}`}
               </Typography>
 
+              <Box sx={{  display: isUzbek? 'flex' : 'none', justifyContent: 'center' }}>
               <Button
                 variant="contained"
                 size="small"
-                sx={{ paddingX: 3 }}
-                onClick={() => saveResultAsPdf()}
+                sx={{ paddingX: 3, display: isUzbek? 'block' : 'none' }}
+                onClick={() => {
+                  saveResultAsPdf()
+                  setShowResultBlock(false)
+                }}
               >
                 {isUzbek
                   ? "To‘liq hisobotni yuklab olish"
                   : "Скачать полный отчет"}
               </Button>
+              </Box>
             </Box>
             <Box
               sx={{ display: isLoading ? "flex" : "none" }}

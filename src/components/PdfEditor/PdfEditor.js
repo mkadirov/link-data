@@ -45,7 +45,7 @@ export const editPdf = async (
 
   // Define the text position and style
   const { width, height } = firstPage.getSize();
-  firstPage.drawText(`${result}`, {
+  firstPage.drawText(`${result} AQSH Dollari`, {
     x: 175,
     y: height - 196, // adjust according to your layout
     size: 30,
@@ -177,4 +177,3 @@ export const editPdf = async (
   const blob = new Blob([pdfBytes], { type: "application/pdf" });
   saveAs(blob, "edited_pdf.pdf");
 };
-
