@@ -64,7 +64,7 @@ function HomeForm() {
   const [owner, setOwner] = useState("Xususiy");
   const [rebate, setRebate] = useState(false);
   const [commission, setCommission] = useState(false);
-  const [pricingMonth, setPricingMonth] = useState(9);
+  const [pricingMonth, setPricingMonth] = useState(10);
   const [pricingYear, setPricingYear] = useState(2024);
   const [isEquipped, setIsEquipped] = useState(true);
   const [result, setResult] = useState("");
@@ -75,43 +75,44 @@ function HomeForm() {
 
   const saveResultAsPdf = () => {
     const resultString = formatNumberFromRight(result)
-    const regionName = isUzbek ? region?.nameUZB : region?.nameRUS;
-    const subRegionName = isUzbek ? subRegion?.nameUZB : subRegion.nameRUS;
-    const districtName = isUzbek ? district?.nameUZB : district?.nameRUS;
+    const regionName = isUzbek ? region?.nameUZB : region?.nameUZB;
+    const subRegionName = isUzbek ? subRegion?.nameUZB : subRegion.nameUZB;
+    const districtName = isUzbek ? district?.nameUZB : district?.nameUZB;
 
     const newArray = publicPlaces.map((item) =>
-      isUzbek ? item.nameUZB : item.nameRUS
+      isUzbek ? item.nameUZB : item.nameUZB
     );
 
     const newFurnitureArray = furniture.map((item) =>
-      isUzbek ? item.nameUZB : item.nameRUS
+      isUzbek ? item.nameUZB : item.nameUZB
     );
     const equipped = isUzbek
       ? isEquipped
         ? "Xa"
         : "Yo'q"
       : isEquipped
-      ? "Да"
-      : "Нет";
-    const buildingTypeName = isUzbek? buildingType.nameUZB : buildingType.nameRUS
-    const planTypeName = isUzbek ? planType.nameUZB : planType.nameRUS
-    const bathroomTypeTypeName = isUzbek ? bathroomType.nameUZB : bathroomType.nameRUS
-    const repairTypeName = isUzbek ? repairType.nameUZB : repairType.nameRUS
-    const marketTypeName = isUzbek ? marketType.nameUZB : marketType.nameRUS
+      ? "Xa"
+      : "Yo'q";
+    const buildingTypeName = isUzbek? buildingType.nameUZB : buildingType.nameUZB
+    const planTypeName = isUzbek ? planType.nameUZB : planType.nameUZB
+    const bathroomTypeTypeName = isUzbek ? bathroomType.nameUZB : bathroomType.nameUZB
+    const repairTypeName = isUzbek ? repairType.nameUZB : repairType.nameUZB
+    const marketTypeName = isUzbek ? marketType.nameUZB : marketType.nameUZB
     const rebateType = isUzbek
       ? rebate
         ? "Xa"
         : "Yo'q"
       : isEquipped
-      ? "Да"
-      : "Нет";
+      ? "Xa"
+      : "Yo'q";
       const commisionName = isUzbek
       ? commission
         ? "Xa"
         : "Yo'q"
       : isEquipped
-      ? "Да"
-      : "Нет";
+      ? "Xa"
+      : "Yo'q";
+
 
     editPdf(
       pdfFile,
@@ -591,11 +592,11 @@ function HomeForm() {
                     )} - ${formatNumberFromRight(priceTo(result))}`}
               </Typography>
 
-              <Box sx={{  display: isUzbek? 'flex' : 'none', justifyContent: 'center' }}>
+             
               <Button
                 variant="contained"
                 size="small"
-                sx={{ paddingX: 3, display: isUzbek? 'block' : 'none' }}
+                sx={{ paddingX: 3}}
                 onClick={() => {
                   saveResultAsPdf()
                   setShowResultBlock(false)
@@ -605,7 +606,7 @@ function HomeForm() {
                   ? "To‘liq hisobotni yuklab olish"
                   : "Скачать полный отчет"}
               </Button>
-              </Box>
+             
             </Box>
             <Box
               sx={{ display: isLoading ? "flex" : "none" }}
