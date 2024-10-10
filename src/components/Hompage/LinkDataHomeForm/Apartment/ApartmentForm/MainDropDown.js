@@ -15,7 +15,7 @@ function MainDropDown({ options, item, setItem }) {
   const anchorRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [rotated, setRotated] = useState(false);
-
+                    
   const { isUzbek } = useContext(MyContext);
 
   const handleMenuItemClick = (event, index, option) => {

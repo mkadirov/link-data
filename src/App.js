@@ -1,9 +1,6 @@
 import {
   Box,
-  Button,
-  Container,
   createTheme,
-  Grid,
   Grid2,
   ThemeProvider,
 } from "@mui/material";
@@ -14,12 +11,10 @@ import { useRef, useState } from "react";
 import Homepage from "./pages/Homepage/Homepage";
 import MainFooter from "./components/Global/Footer/MainFooter";
 
+
 function App() {
   const [isUzbek, setIsUzbek] = useState(true);
   const [mainPageIndex, setMainPageIndex] = useState(1);
-
-  
-
   const theme = createTheme({
     palette: {
       primary: {

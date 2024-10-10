@@ -351,9 +351,9 @@ function HomeForm() {
     const facilities = furniture.map((item) => item.value);
 
     const homeData = {
-      region: region.nameUZB,
-      district: subRegion.nameUZB,
-      neighborhood: district.nameUZB,
+      region: region.value,
+      district: subRegion? subRegion?.value : "",
+      neighborhood: district?.value,
       ownerType: owner,
       bathroomType: bathroomType.nameUZB,
       pricingYear: pricingYear,
