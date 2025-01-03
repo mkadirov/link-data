@@ -21,7 +21,7 @@ import MarketType from "./MarketType";
 import Owner from "./Owner";
 import Rebate from "./Rebate";
 import Commission from "./Commission";
-import Date from "./Date";
+import DateBox from "./Date";
 
 import MeterSquare from "../../../../Global/Symbols/MeterSquare";
 import Equipped from "./Equipped";
@@ -35,8 +35,8 @@ function HomeForm() {
   const [region, setRegion] = useState({
     id: 1,
     nameUZB: "Toshkent shahri",
-    nameRUS: "Город Ташкент"
-});
+    nameRUS: "Город Ташкент",
+  });
   const [subRegions, setSubRegions] = useState([]);
   const [subRegion, setSubRegion] = useState("");
   const [districts, setDistricts] = useState([]);
@@ -64,8 +64,8 @@ function HomeForm() {
   const [owner, setOwner] = useState("Xususiy");
   const [rebate, setRebate] = useState(false);
   const [commission, setCommission] = useState(false);
-  const [pricingMonth, setPricingMonth] = useState(10);
-  const [pricingYear, setPricingYear] = useState(2024);
+  const [pricingMonth, setPricingMonth] = useState("");
+  const [pricingYear, setPricingYear] = useState("");
   const [isEquipped, setIsEquipped] = useState(true);
   const [result, setResult] = useState("");
   const [showResultBlock, setShowResultBlock] = useState(false);
@@ -74,7 +74,7 @@ function HomeForm() {
   const resultRef = useRef(null);
 
   const saveResultAsPdf = () => {
-    const resultString = formatNumberFromRight(result)
+    const resultString = formatNumberFromRight(result);
     const regionName = isUzbek ? region?.nameUZB : region?.nameUZB;
     const subRegionName = isUzbek ? subRegion?.nameUZB : subRegion.nameUZB;
     const districtName = isUzbek ? district?.nameUZB : district?.nameUZB;
@@ -93,11 +93,15 @@ function HomeForm() {
       : isEquipped
       ? "Xa"
       : "Yo'q";
-    const buildingTypeName = isUzbek? buildingType.nameUZB : buildingType.nameUZB
-    const planTypeName = isUzbek ? planType.nameUZB : planType.nameUZB
-    const bathroomTypeTypeName = isUzbek ? bathroomType.nameUZB : bathroomType.nameUZB
-    const repairTypeName = isUzbek ? repairType.nameUZB : repairType.nameUZB
-    const marketTypeName = isUzbek ? marketType.nameUZB : marketType.nameUZB
+    const buildingTypeName = isUzbek
+      ? buildingType.nameUZB
+      : buildingType.nameUZB;
+    const planTypeName = isUzbek ? planType.nameUZB : planType.nameUZB;
+    const bathroomTypeTypeName = isUzbek
+      ? bathroomType.nameUZB
+      : bathroomType.nameUZB;
+    const repairTypeName = isUzbek ? repairType.nameUZB : repairType.nameUZB;
+    const marketTypeName = isUzbek ? marketType.nameUZB : marketType.nameUZB;
     const rebateType = isUzbek
       ? rebate
         ? "Xa"
@@ -105,14 +109,13 @@ function HomeForm() {
       : isEquipped
       ? "Xa"
       : "Yo'q";
-      const commisionName = isUzbek
+    const commisionName = isUzbek
       ? commission
         ? "Xa"
         : "Yo'q"
       : isEquipped
       ? "Xa"
       : "Yo'q";
-
 
     editPdf(
       pdfFile,
@@ -137,7 +140,6 @@ function HomeForm() {
       commisionName,
       pricingMonth,
       pricingYear
-
     );
   };
 
@@ -146,6 +148,19 @@ function HomeForm() {
       resultRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
+  useEffect(() => {
+    const fetchData = () => {
+      const currentDate = new Date();
+      console.log(currentDate.getFullYear());
+      setPricingYear(currentDate.getFullYear());
+      setPricingMonth(currentDate.getMonth() + 1);
+    };
+
+    if (!pricingMonth && !pricingYear) {
+      fetchData();
+    }
+  }, []);
 
   useEffect(() => {
     setDistrict("");
@@ -352,7 +367,7 @@ function HomeForm() {
 
     const homeData = {
       region: region.value,
-      district: subRegion? subRegion?.value : "",
+      district: subRegion ? subRegion?.value : "",
       neighborhood: district?.value,
       ownerType: owner,
       bathroomType: bathroomType.nameUZB,
@@ -370,7 +385,7 @@ function HomeForm() {
       pricingMonth: pricingMonth,
       floor: floor,
       buildType: buildingType.nameUZB,
-      commission: commission? 1 : 0
+      commission: commission ? 1 : 0,
     };
 
     const fetchData = async () => {
@@ -481,7 +496,7 @@ function HomeForm() {
 
           <Commission commission={commission} setCommission={setCommission} />
 
-          <Date
+          <DateBox
             pricingMonth={pricingMonth}
             setPricingMonth={setPricingMonth}
             pricingYear={pricingYear}
@@ -592,21 +607,19 @@ function HomeForm() {
                     )} - ${formatNumberFromRight(priceTo(result))}`}
               </Typography>
 
-             
               <Button
                 variant="contained"
                 size="small"
-                sx={{ paddingX: 3}}
+                sx={{ paddingX: 3 }}
                 onClick={() => {
-                  saveResultAsPdf()
-                  setShowResultBlock(false)
+                  saveResultAsPdf();
+                  setShowResultBlock(false);
                 }}
               >
                 {isUzbek
                   ? "To‘liq hisobotni yuklab olish"
                   : "Скачать полный отчет"}
               </Button>
-             
             </Box>
             <Box
               sx={{ display: isLoading ? "flex" : "none" }}

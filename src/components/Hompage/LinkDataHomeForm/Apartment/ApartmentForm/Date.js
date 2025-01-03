@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import MyContext from "../../../../Context/MyContext";
 
 
-function Date({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
+function DateBox({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
   const { isUzbek } = useContext(MyContext);
 
   const handleChangeMonth = (e) => {
@@ -51,4 +51,4 @@ function Date({ pricingMonth, setPricingMonth, pricingYear, setPricingYear }) {
   );
 }
 
-export default Date;
+export default DateBox;
